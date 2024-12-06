@@ -29,8 +29,12 @@ const upload = multer({
 
 // CORS configuration
 app.use(cors({
-  origin: 'https://blog-6mcffdjev-barkatkamran2015s-projects.vercel.app', 
+  origin: [
+    'https://blog-5ys9lkrtk-barkatkamran2015s-projects.vercel.app', // Quill Editor URL
+    'https://blog-6mcffdjev-barkatkamran2015s-projects.vercel.app', // Home Page URL
+  ],
 }));
+
 
 // File upload route
 app.post('/api/upload', upload.single('file'), (req, res) => {
