@@ -31,7 +31,7 @@ const AdminDashboard = () => {
     formData.append('file', file);
   
     try {
-      const response = await fetch('https://api-ss5e.onrender.com/api/upload', {
+      const response = await fetch('api-omega-gules.vercel.app/api/upload', {
         method: 'POST',
         body: formData,
       });
