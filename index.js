@@ -29,7 +29,7 @@ const upload = multer({
 
 // CORS configuration
 app.use(cors({
-  origin: 'https://blog-5ys9lkrtk-barkatkamran2015s-projects.vercel.app', // Update with the correct frontend URL
+  origin: 'https://blog-6mcffdjev-barkatkamran2015s-projects.vercel.app', 
 }));
 
 // File upload route
