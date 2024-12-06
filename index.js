@@ -28,7 +28,7 @@ module.exports = (req, res) => {
       }
 
       // Simulating an upload URL (change this to actual cloud storage if needed)
-      const imageUrl = `https://your-project-name.vercel.app/api/uploads/${file.filename}`;
+      const imageUrl = `https://api.vercel.app/api/uploads/${file.filename}`;
       res.send({ imageUrl });
     });
   });
