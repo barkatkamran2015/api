@@ -1,13 +1,11 @@
 const multer = require('multer');
 const path = require('path');
-const cors = require('cors');
-const fs = require('fs');
-const os = require('os');
 
+// Use Multer for file handling
 const upload = multer({
-  dest: os.tmpdir(),  // Use the temporary directory in the serverless environment
+  dest: '/tmp/uploads/',  // Temporary folder for Vercel (it’s ephemeral storage)
   fileFilter: (req, file, cb) => {
-    const filetypes = /jpeg|jpg|png|gif/; // Allow specific image formats
+    const filetypes = /jpeg|jpg|png|gif/;
     const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
     if (extname) {
       return cb(null, true);
@@ -16,20 +14,29 @@ const upload = multer({
   },
 });
 
+// The handler for the /api/upload route on Vercel
 module.exports = (req, res) => {
-  cors()(req, res, () => {
-    upload.single('file')(req, res, (err) => {
+  if (req.method === 'POST') {
+    // Use multer to handle the file upload
+    upload.single('file')(req, res, function (err) {
       if (err) {
-        return res.status(400).send(err.message);
+        return res.status(400).send(err.message);  // Error handling
       }
+
       const file = req.file;
       if (!file) {
         return res.status(400).send('No file uploaded');
       }
 
-      // Simulating an upload URL (change this to actual cloud storage if needed)
-      const imageUrl = `https://api.vercel.app/api/uploads/${file.filename}`;
-      res.send({ imageUrl });
+      // The file is temporarily stored in /tmp/uploads/
+      // Now return the image URL based on the current Vercel deployment
+      const imageUrl = `https://${process.env.https://api-mk43ccxuz-barkatkamran2015s-projects.vercel.app/}/api/uploads/${file.filename}`;
+      return res.status(200).send({ imageUrl });
     });
-  });
+  } else {
+    res.status(405).send('Method Not Allowed'); // Handle invalid methods
+  }
 };
+
+// Serve static files (not recommended for Vercel's serverless functions, but possible)
+// Note: Vercel’s filesystem is read-only, so files can't persist across requests
