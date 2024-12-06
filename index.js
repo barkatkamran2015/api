@@ -29,7 +29,7 @@ const upload = multer({
 
 // CORS configuration
 app.use(cors({
-  origin: 'https://your-frontend-url.com', // Replace with your frontend URL
+  origin: 'https://blog-nine-zeta-87.vercel.app/', // Replace with your frontend URL
 }));
 
 // File upload route
