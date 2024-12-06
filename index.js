@@ -4,6 +4,12 @@ const path = require('path');
 const cors = require('cors');
 
 const app = express();
+
+app.use(cors());
+
+// Serve static files from the uploads directory
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
 const upload = multer({
   dest: 'uploads/',
   fileFilter: (req, file, cb) => {
@@ -16,8 +22,6 @@ const upload = multer({
   },
 });
 
-app.use(cors());
-
 app.post('/api/upload', upload.single('file'), (req, res) => {
   const file = req.file;
   if (!file) {
@@ -25,9 +29,7 @@ app.post('/api/upload', upload.single('file'), (req, res) => {
   }
 
   const imageUrl = `https://api-blush-zeta.vercel.app/uploads/${file.filename}`;
-res.send({ imageUrl });
-
-
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+  res.send({ imageUrl });
+});
 
 app.listen(5000, () => console.log('Server running on port 5000'));
