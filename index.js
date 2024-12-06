@@ -1,11 +1,15 @@
+const express = require('express');
+const cors = require('cors');
 const multer = require('multer');
 const path = require('path');
 
-// Use Multer for file handling
+const app = express();
+app.use(cors());  // Allow all domains by default (for testing)
+
 const upload = multer({
-  dest: '/tmp/uploads/',  // Temporary folder for Vercel (it’s ephemeral storage)
+  dest: 'uploads/',
   fileFilter: (req, file, cb) => {
-    const filetypes = /jpeg|jpg|png|gif/;
+    const filetypes = /jpeg|jpg|png|gif/;  // Allow specific image formats
     const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
     if (extname) {
       return cb(null, true);
@@ -14,29 +18,14 @@ const upload = multer({
   },
 });
 
-// The handler for the /api/upload route on Vercel
-module.exports = (req, res) => {
-  if (req.method === 'POST') {
-    // Use multer to handle the file upload
-    upload.single('file')(req, res, function (err) {
-      if (err) {
-        return res.status(400).send(err.message);  // Error handling
-      }
-
-      const file = req.file;
-      if (!file) {
-        return res.status(400).send('No file uploaded');
-      }
-
-      // The file is temporarily stored in /tmp/uploads/
-      // Now return the image URL based on the current Vercel deployment
-      const imageUrl = `https://${process.env.https://api-mk43ccxuz-barkatkamran2015s-projects.vercel.app/}/api/uploads/${file.filename}`;
-      return res.status(200).send({ imageUrl });
-    });
-  } else {
-    res.status(405).send('Method Not Allowed'); // Handle invalid methods
+// Define your upload route
+app.post('/api/upload', upload.single('file'), (req, res) => {
+  const file = req.file;
+  if (!file) {
+    return res.status(400).send('No file uploaded');
   }
-};
+  const imageUrl = `https://api-omega-gules.vercel.app/uploads/${file.filename}`;  // Ensure correct URL
+  res.send({ imageUrl });
+});
 
-// Serve static files (not recommended for Vercel's serverless functions, but possible)
-// Note: Vercel’s filesystem is read-only, so files can't persist across requests
+app.listen(5000, () => console.log('Server running on port 5000'));
