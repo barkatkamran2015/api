@@ -1,11 +1,11 @@
-const express = require('express');
 const multer = require('multer');
 const path = require('path');
 const cors = require('cors');
+const fs = require('fs');
+const os = require('os');
 
-const app = express();
 const upload = multer({
-  dest: 'uploads/',
+  dest: os.tmpdir(),  // Use the temporary directory in the serverless environment
   fileFilter: (req, file, cb) => {
     const filetypes = /jpeg|jpg|png|gif/; // Allow specific image formats
     const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
@@ -16,20 +16,20 @@ const upload = multer({
   },
 });
 
-app.use(cors({
-  origin: 'https://blog-c6rk.onrender.com' // Adjust with your frontend URL
-}));
+module.exports = (req, res) => {
+  cors()(req, res, () => {
+    upload.single('file')(req, res, (err) => {
+      if (err) {
+        return res.status(400).send(err.message);
+      }
+      const file = req.file;
+      if (!file) {
+        return res.status(400).send('No file uploaded');
+      }
 
-app.post('/api/upload', upload.single('file'), (req, res) => {
-  const file = req.file;
-  if (!file) {
-    return res.status(400).send('No file uploaded');
-  }
-
-  const imageUrl = `https://blog-c6rk.onrender.com/uploads/${file.filename}`; // Adjust for deployment
-  res.send({ imageUrl });
-});
-
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
-
-app.listen(5000, () => console.log('Server running on port 5000'));
+      // Simulating an upload URL (change this to actual cloud storage if needed)
+      const imageUrl = `https://your-project-name.vercel.app/api/uploads/${file.filename}`;
+      res.send({ imageUrl });
+    });
+  });
+};
