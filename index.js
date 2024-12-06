@@ -24,9 +24,9 @@ app.post('/api/upload', upload.single('file'), (req, res) => {
     return res.status(400).send('No file uploaded');
   }
 
-  const imageUrl = `https://api-blush-zeta.vercel.app//uploads/${file.filename}`; // Adjust for your deployment setup
-  res.send({ imageUrl });
-});
+  const imageUrl = `https://api-blush-zeta.vercel.app/uploads/${file.filename}`;
+res.send({ imageUrl });
+
 
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
