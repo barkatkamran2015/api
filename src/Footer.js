@@ -16,8 +16,9 @@ export default function Footer() {
           <ul>
             <li><Link to="/about">About</Link></li>
             <li><Link to="/contact">Contact Us</Link></li>
-            <li><Link to="/yummy">Yummy Recipes</Link></li>
-            <li><Link to="/fun">Fun Activities</Link></li>
+            <li><Link to="/products-review">Products Review</Link></li>
+            <li><Link to="/recipe">Recipe</Link></li>
+            <li><Link to="/blog">Blog</Link></li>
           </ul>
         </div>
         <div className="footer-section social">
