@@ -31,10 +31,11 @@ const AdminDashboard = () => {
     formData.append('file', file);
   
     try {
-      const response = await fetch('https://api-blush-zeta.vercel.app//api/upload', {
-        method: 'POST',
-        body: formData,
-      });
+      const response = await fetch('https://api-ss5e.onrender.com/api/upload', {
+  method: 'POST',
+  body: formData,
+});
+
   
       if (!response.ok) {
         throw new Error('Failed to upload image');
