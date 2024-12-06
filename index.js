@@ -5,7 +5,7 @@ const cors = require('cors');
 
 const app = express();
 const upload = multer({
-  dest: '/tmp/uploads/', // Use tmp directory for Vercel serverless functions
+  dest: 'uploads/',
   fileFilter: (req, file, cb) => {
     const filetypes = /jpeg|jpg|png|gif/; // Allow specific image formats
     const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
@@ -24,12 +24,10 @@ app.post('/api/upload', upload.single('file'), (req, res) => {
     return res.status(400).send('No file uploaded');
   }
 
-  // The image URL should be the one pointing to the Vercel domain
-  const imageUrl = `https://api-omega-gules.vercel.app/uploads/${file.filename}`;
+  const imageUrl = `https://api-blush-zeta.vercel.app//uploads/${file.filename}`; // Adjust for your deployment setup
   res.send({ imageUrl });
 });
 
-app.use('/uploads', express.static(path.join(__dirname, '/tmp/uploads'))); // Serve from tmp directory
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
-// Vercel only allows the serverless functions to listen on the default port, so it listens on port 3000
-app.listen(3000, () => console.log('Server running on port 3000')); // Default for Vercel
+app.listen(5000, () => console.log('Server running on port 5000'));
