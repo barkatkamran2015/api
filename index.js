@@ -16,7 +16,9 @@ const upload = multer({
   },
 });
 
-app.use(cors());
+app.use(cors({
+  origin: 'https://blog-c6rk.onrender.com' // Adjust with your frontend URL
+}));
 
 app.post('/api/upload', upload.single('file'), (req, res) => {
   const file = req.file;
@@ -24,7 +26,7 @@ app.post('/api/upload', upload.single('file'), (req, res) => {
     return res.status(400).send('No file uploaded');
   }
 
-  const imageUrl = `http://localhost:5000/uploads/${file.filename}`; // Adjust for your deployment setup
+  const imageUrl = `https://blog-c6rk.onrender.com/uploads/${file.filename}`; // Adjust for deployment
   res.send({ imageUrl });
 });
 
