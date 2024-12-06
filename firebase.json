@@ -1,0 +1,13 @@
+{
+    "storage": {
+      "cors": [
+        {
+          "origin": ["http://localhost:3000"],
+          "responseHeader": ["Content-Type"],
+          "method": ["GET", "POST", "PUT", "DELETE"],
+          "maxAgeSeconds": 3600
+        }
+      ]
+    }
+  }
+  

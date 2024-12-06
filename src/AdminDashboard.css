@@ -1,0 +1,180 @@
+/* Styling for Admin Dashboard */
+.admin-dashboard {
+  margin: 40px auto;
+  max-width: 900px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 20px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.post-form {
+  display: flex;
+  flex-direction: column;
+  gap: 25px; /* More space between elements */
+}
+
+.title-input, .page-select {
+  padding: 12px 15px;
+  font-size: 1rem;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  transition: border-color 0.3s ease;
+  background-color: #fff;
+}
+
+.title-input:focus, .page-select:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.image-upload {
+  font-size: 1rem;
+  margin-bottom: 15px;
+  font-weight: bold;
+  color: #555;
+}
+
+.uploaded-image {
+  max-width: 350px;
+  margin-top: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.quill-editor {
+  height: 300px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  background-color: #fff;
+}
+
+.submit-button {
+  padding: 12px 18px;
+  font-size: 1rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+  background-color: #0056b3;
+}
+
+.submit-button:active {
+  background-color: #004085;
+  transform: scale(0.98);
+}
+
+.error-message {
+  color: red;
+  font-size: 1rem;
+  margin-top: 10px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.buttons-container {
+  display: flex;
+  gap: 20px;
+  margin-top: 15px;
+}
+
+.edit-button, .delete-button {
+  padding: 12px 20px;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s ease-in-out;
+  font-weight: 600;
+  border: none;
+}
+
+.edit-button {
+  background-color: #28a745;
+  color: white;
+}
+
+.edit-button:hover {
+  background-color: #218838;
+}
+
+.edit-button:active {
+  background-color: #1e7e34;
+  transform: scale(0.98);
+}
+
+.delete-button {
+  background-color: #dc3545;
+  color: white;
+}
+
+.delete-button:hover {
+  background-color: #c82333;
+}
+
+.delete-button:active {
+  background-color: #bd2130;
+  transform: scale(0.98);
+}
+
+.editor-container {
+  position: relative;
+  resize: none;
+  overflow: hidden;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.resize-handle {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 10px;
+  cursor: ns-resize;
+  background-color: #ddd;
+}
+
+.resizable:hover .resize-handle {
+  background-color: #bbb;
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .admin-dashboard {
+      margin: 20px;
+      padding: 15px;
+  }
+
+  h2 {
+      font-size: 1.8rem;
+  }
+
+  .post-form {
+      gap: 15px; /* Adjust space for smaller screens */
+  }
+
+  .title-input, .page-select, .submit-button {
+      font-size: 0.9rem;
+  }
+
+  .uploaded-image {
+      max-width: 100%;
+  }
+}

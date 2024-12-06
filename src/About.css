@@ -1,0 +1,167 @@
+/* Reset default styles */
+body, h1, h2, p {
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+}
+
+/* General page styling */
+body {
+  background-color: #fdf6e3; /* Light background for a food-themed page */
+  color: #333;
+  line-height: 1.6;
+  padding: 20px;
+}
+
+
+.about-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  .header-1 h1{
+    text-align: center;
+    color: rgb(51, 99, 29);
+  }
+  
+  .about-text-top {
+    text-align: left;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 20px; /* Space below the first text section */
+  }
+  
+  .about-middle-section {
+    display: block;
+  }
+  
+  .about1-icon {
+    width: 550px;
+    height: 350px;
+    border-radius: 10px;
+    object-fit: cover;
+    float: right; /* Float image to the right */
+    margin-left: 20px; /* Space between image and text */
+    margin-bottom: 20px; /* Space below image for text */
+  }
+  
+  .about-text-side {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    text-align: left;
+  }
+  
+  @media (max-width: 768px) {
+    .about1-icon {
+      width: 100%;
+      height: auto; /* Adjust height on smaller screens */
+      float: none; /* Remove float on smaller screens */
+      margin-left: 0; /* Remove margin on smaller screens */
+      margin-bottom: 10px; /* Adjust space below image on smaller screens */
+    }
+  
+    .about-text-side {
+      text-align: center;
+    }
+  }
+
+
+  /* styling for Fun Activities Page */
+  .container {
+    width: 100%;
+    max-width: 1200px;
+    margin-left: 350px;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+  .container img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin-top: 10px;
+  }
+  
+  .container h1,
+  .container h2 {
+    margin: 0;
+    padding: 10px 0;
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
+    line-height: 33px;
+    margin-bottom: 16px;
+  }
+  
+  .container p,
+  .container div {
+    margin: 10px 0;
+    padding: 10px 0;
+    text-align: justify;
+    font-family: var(--dog-font-family, var(--font-2, inherit));
+    font-size: var(--dog-font-size, 1.125rem);
+    letter-spacing: var(--dog-letter-spacing, inherit);
+    line-height: var(--dog-line-height, 1.9rem);
+    text-underline-offset: var(--dog-text-underline-offset, .25rem);
+  }
+  
+  /* Media query for smaller screens */
+  @media (max-width: 960px) {
+    .container {
+      margin-left: 0%; /* Adjusts the left margin on smaller screens for better responsiveness */
+      max-width: 100%; /* Ensures the content doesn't overflow */
+    }
+  }
+
+
+  /* Post container */
+.post-container {
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Post title */
+.post-container h2 {
+  font-size: 40px;
+  color: #333;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+/* Post image */
+.post-container img {
+  width: 100%;
+  height: 600px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+/* Post summary */
+.post-container p {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+/* Post content */
+.post-container div {
+  font-size: 16px;
+  color: #555;
+  line-height: 1.8;
+}
+
+/* No posts available message */
+.no-posts {
+  text-align: center;
+  font-size: 24px;
+  color: #888;
+  margin-top: 50px;
+}
+  
+  
+  
+  
+  

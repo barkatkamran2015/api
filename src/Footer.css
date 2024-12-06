@@ -1,0 +1,84 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
+  
+  /* Footer styling starts here */
+  .footer {
+    width: 100%;
+    background-color: #7d792c;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  /* Ensure the footer content stretches across the entire footer */
+  .footer-content {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    width: 100%; /* Ensure full width */
+    padding: 0 10px; /* Add some padding to avoid content touching the sides */
+    box-sizing: border-box; /* Include padding in the element’s width */
+  }
+  
+  .footer-section {
+    margin: 15px;
+    flex-basis: 22%;
+    min-width: 200px; /* Ensure sections don't become too narrow on small screens */
+  }
+  
+  .footer-section h2 {
+    margin-bottom: 15px;
+    font-size: 18px;
+    color: #fff;
+  }
+  
+  .footer-section p, .footer-section ul {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  
+  .footer-section ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .footer-section ul li {
+    margin-bottom: 10px;
+  }
+  
+  .footer-section ul li a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  
+  .footer-section ul li a:hover {
+    color: #ffd700;
+  }
+  
+  .social-icons {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+  }
+  
+  .social-icons a {
+    color: #fff;
+    font-size: 20px;
+    margin: 0 10px;
+    transition: color 0.3s;
+  }
+  
+  .social-icons a:hover {
+    color: #ffd700;
+  }
+  
+  .footer-bottom {
+    margin-top: 20px;
+    font-size: 14px;
+  }
+

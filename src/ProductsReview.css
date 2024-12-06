@@ -1,0 +1,112 @@
+/* General styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+  }
+  
+  /* Wrapper for the entire products review section */
+  .products-review {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .products-review h2 {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .products-review p {
+    font-size: 1.1rem;
+    color: #666;
+    line-height: 1.6;
+    text-align: center;
+  }
+  
+  /* Styling for each post item */
+  .post-item {
+    background-color: #fafafa;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  }
+  
+  .post-item h3 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .post-item p {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.6;
+  }
+  
+  .post-item img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-top: 15px;
+  }
+  
+  /* Error message styling */
+  .products-review p {
+    color: #1a100f;
+    text-align: left;
+    margin-top: 20px;
+  }
+  
+  /* Responsive design */
+  @media screen and (max-width: 768px) {
+    .products-review {
+      padding: 15px;
+    }
+  
+    .products-review h2 {
+      font-size: 1.8rem;
+    }
+  
+    .post-item {
+      padding: 15px;
+    }
+  
+    .post-item h3 {
+      font-size: 1.3rem;
+    }
+  
+    .post-item p {
+      font-size: 1rem;
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    .products-review {
+      padding: 10px;
+    }
+  
+    .products-review h2 {
+      font-size: 1.5rem;
+    }
+  
+    .post-item {
+      padding: 10px;
+    }
+  
+    .post-item h3 {
+      font-size: 1.1rem;
+    }
+  
+    .post-item p {
+      font-size: 0.9rem;
+    }
+  }
+  
