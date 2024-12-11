@@ -3,7 +3,6 @@ import { firestore, storage } from '../Admin/firebaseConfig'; // Ensure this is 
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import { addDoc, collection, onSnapshot, serverTimestamp, updateDoc, doc, deleteDoc } from 'firebase/firestore';
-import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 import DOMPurify from 'dompurify';
 import '../AdminDashboard.css';
 
@@ -16,8 +15,10 @@ const AdminDashboard = () => {
   const [successMessage, setSuccessMessage] = useState('');
   const [uploadProgress, setUploadProgress] = useState(0);
   const [posts, setPosts] = useState([]);
+  const [filteredPosts, setFilteredPosts] = useState([]);
   const [editMode, setEditMode] = useState(false);
   const [currentPostId, setCurrentPostId] = useState('');
+  const [searchQuery, setSearchQuery] = useState('');
 
   // Handles image upload
   const handleImageUpload = async (e) => {
@@ -32,9 +33,9 @@ const AdminDashboard = () => {
   
     try {
       const response = await fetch('https://api-ss5e.onrender.com/api/upload', {
-  method: 'POST',
-  body: formData,
-});
+        method: 'POST',
+        body: formData,
+      });
 
   
       if (!response.ok) {
@@ -51,7 +52,6 @@ const AdminDashboard = () => {
       setUploadProgress(0);
     }
   };
-  
 
   // Handles post submission (add/update)
   const handlePostSubmission = async (e) => {
@@ -110,6 +110,7 @@ const AdminDashboard = () => {
           ...doc.data(),
         }));
         setPosts(postsArray);
+        setFilteredPosts(postsArray);  // Set filtered posts initially to all posts
       },
       (error) => {
         console.error('Error fetching posts:', error);
@@ -146,6 +147,17 @@ const AdminDashboard = () => {
     }
   };
 
+  // Handle search query
+  const handleSearch = (query) => {
+    const lowerCaseQuery = query.toLowerCase();
+    const results = posts.filter(
+      (post) =>
+        post.title.toLowerCase().includes(lowerCaseQuery) ||
+        (post.content && post.content.toLowerCase().includes(lowerCaseQuery))
+    );
+    setFilteredPosts(results);
+  };
+
   const modules = {
     toolbar: [
       [{ header: '1' }, { header: '2' }, { font: [] }],
@@ -163,10 +175,23 @@ const AdminDashboard = () => {
       {successMessage && <p className="success-message">{successMessage}</p>}
       {error && <p className="error-message">{error}</p>}
 
+      <div className="search-container">
+        <input
+          type="text"
+          placeholder="Search posts"
+          value={searchQuery}
+          onChange={(e) => {
+            setSearchQuery(e.target.value);
+            handleSearch(e.target.value);  // Trigger search when user types
+          }}
+          className="search-input"
+        />
+      </div>
+
       <form onSubmit={handlePostSubmission} className="post-form">
         <input
           type="text"
-          placeholder="Post Title"
+          placeholder="Post Title" 
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           className="title-input"
@@ -191,10 +216,10 @@ const AdminDashboard = () => {
 
       <div className="posts-list">
         <h3>Recent Posts</h3>
-        {posts.length === 0 ? (
+        {filteredPosts.length === 0 ? (
           <p>No posts available</p>
         ) : (
-          posts.map((post) => (
+          filteredPosts.map((post) => (
             <div key={post.id} className="post-item">
               <h4>{post.title}</h4>
               <p dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(post.content) }} />

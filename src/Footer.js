@@ -32,7 +32,6 @@ export default function Footer() {
         </div>
         <div className="footer-section contact">
           <h2>Contact Us</h2>
-          <p><i className="fas fa-phone"></i> +123 456 7890</p>
           <p><i className="fas fa-envelope"></i> fatimarezaie1234@gmail.com</p>
         </div>
       </div>

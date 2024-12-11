@@ -1,0 +1,35 @@
+.header {
+    position: relative; 
+  }
+  
+  .header-search {
+    position: absolute; 
+    top: -100px; 
+    right: 600px; 
+    width: 300px; 
+    padding: 5px; 
+    border-radius: 15px;
+  }
+  
+  @media (max-width: 768px) {
+    .header-search {
+      width: 80%; 
+      top: -20px;
+      right: 40px;
+      align-items: center;
+    }
+  }
+  
+  .header-search input {
+    font-size: 14px; 
+    padding: 10px 15px; 
+  }
+  .header-search input:hover {
+    border-color: rgb(156, 13, 156);
+  }
+  .header-search input:focus {
+    border-color: darkviolet; 
+    box-shadow: 0 0 5px rgba(148, 0, 211, 0.5);
+  }
+  
+

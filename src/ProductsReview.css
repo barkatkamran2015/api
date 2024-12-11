@@ -8,7 +8,7 @@ body {
   
   /* Wrapper for the entire products review section */
   .products-review {
-    max-width: 1200px;
+    max-width: 1250px;
     margin: 20px auto;
     padding: 20px;
     background-color: #fff;
@@ -19,8 +19,8 @@ body {
   .products-review h2 {
     font-size: 2rem;
     text-align: center;
-    margin-bottom: 20px;
-    color: #333;
+    margin-bottom: 10px;
+    color: #0f6080;
   }
   
   .products-review p {
@@ -69,6 +69,7 @@ body {
   @media screen and (max-width: 768px) {
     .products-review {
       padding: 15px;
+      margin-right: 5px;
     }
   
     .products-review h2 {
